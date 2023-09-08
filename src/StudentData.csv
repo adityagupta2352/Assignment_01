@@ -1,0 +1,9 @@
+Id,Name,Class_id,Marks,Gender,Age
+1,Stud1,1,88,F,10
+2,Stud2,1,70,F,11
+3,Stud3,2,88,M,22
+4,Stud4,2,55,M,33
+5,Stud5,1,30,F,44
+6,Stud6,3,30,F,33
+7,Stud7,3,10,F,22
+8,Stud8,3,0,M,11

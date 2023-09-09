@@ -21,7 +21,12 @@ public class SolutionFifth {
 	
 		List<Student> filteredStudent5 = findFailedStudent(classList , studentList , addressList , targetGender , targetAge , targetCity , targetPinCode);
 				
+		
 		System.out.println("Names of all fail students  :- ");
+		filteredStudent5.forEach(st -> System.out.println("Id " + st.getId() + " Name " + st.getName() + " Gender " + st.getGender()
+		+ " Age " + st.getAge() + " Marks " + st.getMarks()));
+		
+		/*
 		for(Student student : filteredStudent5)
 		{
 			System.out.println("Id " + student.getId());
@@ -30,6 +35,7 @@ public class SolutionFifth {
 			System.out.println("Age " + student.getAge());
 			System.out.println("Marks " + student.getMarks());
 		}
+		*/
 	}
 	
 	private static List<Student> findFailedStudent(List<Class> classList, List<Student> studentList,

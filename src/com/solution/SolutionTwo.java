@@ -8,19 +8,15 @@ public class SolutionTwo {
 
 	public static void main(String[] args) throws IOException {
 
-		List<Class> classList = Main.readClassDataFromCSV();
 		List<Student> studentList = Main.readStudentDataFromCSV();
 		List<Address> addressList = Main.readAddressDataFromCSV();
 		
-		// ** Second **
-		int targetPinCode = 482002;
 		String targetGender = "";
 		int targetAge = 0;
 		String targetCity = "Indore";
-		List<Student> filteredStudents2 = findStudentByCity(classList , studentList , addressList , targetCity , targetGender , targetAge);
+		List<Student> filteredStudents2 = findStudentByCity(studentList , addressList , targetCity , targetGender , targetAge);
 		
 		filteredStudents2.forEach(student -> System.out.println("Id:" + student.getId() + ", Name : " + student.getName()));
-		
 		
 		/*
 		for(Student student : filteredStudents2)
@@ -33,17 +29,14 @@ public class SolutionTwo {
 
 	}
 	
-	private static List<Student> findStudentByCity(List<Class> classList, List<Student> studentList,
+	private static List<Student> findStudentByCity(List<Student> studentList,
 			List<Address> addressList, String targetCity, String targetGender, int targetAge) {
 		
+        List<Integer> findStudentIdByCity = addressList.stream().filter(ad -> ad.getCity().equals(targetCity)).map(st -> st.getStudentId()).collect(Collectors.toList());
 		
-		List<Student> filteredStudents = studentList.stream()
-                .filter(student -> addressList.stream()
-                        .anyMatch(address -> address.getStudentId() == student.getId() && address.getCity().equals(targetCity)))
-                .collect(Collectors.toList());
-
+		List<Student> findStudentInfo = studentList.stream().filter(st -> findStudentIdByCity.contains(st.getId())).collect(Collectors.toList());
 		
-		return filteredStudents;
+		return findStudentInfo;
 		
 		/*
 		for(Address address : addressList)

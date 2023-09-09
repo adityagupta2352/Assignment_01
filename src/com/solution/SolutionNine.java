@@ -8,7 +8,6 @@ public class SolutionNine {
 
 	public static void main(String[] args) throws IOException {
 
-		List<Class> classList = Main.readClassDataFromCSV();
 		List<Student> studentList = Main.readStudentDataFromCSV();
 		List<Address> addressList = Main.readAddressDataFromCSV();
         int deleteId = 2;
@@ -19,15 +18,17 @@ public class SolutionNine {
 
 	private static void deleteStudentAndAddress(List<Student> studentList, List<Address> addressList, int deleteId) {
 		
-		List<Student> filteredStudent9 = studentList.stream().filter(st -> st.getId() != deleteId).collect(Collectors.toList());
-		List<Address> filteredAddress9 = addressList.stream().filter(ad -> ad.getStudentId() != deleteId).collect(Collectors.toList());
+		List<Student> filteredStudent9 = studentList.stream().filter(st -> st.getId() == deleteId).collect(Collectors.toList());
+		List<Address> filteredAddress9 = addressList.stream().filter(ad -> ad.getStudentId() == deleteId).collect(Collectors.toList());
+		
+		studentList.removeAll(filteredStudent9);
+		addressList.removeAll(filteredAddress9);
 		
 		System.out.println("After deleting student and address data :- ");
 		
-		filteredStudent9.forEach(st -> System.out.println("Id :- " + st.getId() + " , Name :- " + st.getName() + " ,Age ;- " + st.getAge()));
+		studentList.forEach(st -> System.out.println("Id :- " + st.getId() + " , Name :- " + st.getName() + " ,Age ;- " + st.getAge()));
 		
-		filteredAddress9.forEach(st -> System.out.println("Id :- " + st.getId() + " , Student ID :- " + st.getStudentId() + " ,Pincode ;- " + st.getPinCode()));
-		
+		addressList.forEach(st -> System.out.println("Id :- " + st.getId() + " , Student ID :- " + st.getStudentId() + " ,Pincode ;- " + st.getPinCode()));
 	}
 
 }

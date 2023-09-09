@@ -13,11 +13,13 @@ public class SolutionSix {
 		List<Student> studentList = Main.readStudentDataFromCSV();
 		List<Address> addressList = Main.readAddressDataFromCSV();
 
-		// ** Six **
-		String targetCity = "Indore";
 		String x = "A";
 		List<Student> filteredStudent6 = findAllStudent(classList , studentList , addressList , x);
 		
+		filteredStudent6.forEach(st -> System.out.println("Id " + st.getId() + " Name " + st.getName() + " Gender " + st.getGender()
+		+ " Age " + st.getAge() + " Marks " + st.getMarks()));
+		
+		/*
 		for(Student student : filteredStudent6)
 		{
 			System.out.println("Id " + student.getId());
@@ -26,24 +28,16 @@ public class SolutionSix {
 			System.out.println("Age " + student.getAge());
 			System.out.println("Marks " + student.getMarks());
 		}
+		*/
 		
 	}
 	
 	private static List<Student> findAllStudent(List<Class> classList, List<Student> studentList, List<Address> addressList, String x) {
 		
-		List<Class> className = classList.stream().filter(cls -> cls.getName().equals(x)).collect(Collectors.toList());
+		List<Integer> classId = classList.stream().filter(cls -> cls.getName().equals(x)).map(cls -> cls.getId()).collect(Collectors.toList());
 		
-		List<Integer> id = className.stream().map(s -> s.getId()).collect(Collectors.toList());
+		return studentList.stream().filter(s -> classId.contains(s.getClassId())).collect(Collectors.toList());
 		
-		return studentList.stream().filter(s -> id.contains(s.getClassId())).collect(Collectors.toList());
-		
-		/*
-		List<Student> filteredStudent6 = classList.stream()
-			    .filter(classT -> classT.getName().equals(x))
-			    .map(Class::getId)
-			    .flatMap(classId -> studentList.stream().filter(student -> student.getClassId() == classId))
-			    .collect(Collectors.toList());
-		*/
 		
 		/*
 		for(Class classT : classList)

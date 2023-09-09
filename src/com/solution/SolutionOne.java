@@ -8,7 +8,6 @@ public class SolutionOne
 {
 			public static void main(String args[]) throws IOException
 			{
-				List<Class> classList = Main.readClassDataFromCSV();
 				List<Student> studentList = Main.readStudentDataFromCSV();
 				List<Address> addressList = Main.readAddressDataFromCSV();
 				
@@ -17,7 +16,7 @@ public class SolutionOne
 				String targetGender = "";
 				int targetAge = 0;
 				
-				List<Student> filteredStudents = findStudentsByPinCode(classList , studentList , addressList , targetPinCode , targetGender , targetAge);
+				List<Student> filteredStudents = findStudentsByPinCode(studentList , addressList , targetPinCode , targetGender , targetAge);
 			
 				filteredStudents.forEach(student -> System.out.println("Id:" + student.getId() + ", Name : " + student.getName()));
 				
@@ -30,17 +29,28 @@ public class SolutionOne
 				
 			}
 			
-			private static List<Student> findStudentsByPinCode(List<Class> classList, List<Student> studentList,
+			private static List<Student> findStudentsByPinCode(List<Student> studentList,
 					
 					List<Address> addressList, int targetPinCode, String targetGender, int targetAge) {
+				
+				    // ** One Way ** 
+				    List<Integer> findStudentIdByPin = addressList.stream().filter(ad -> ad.getPinCode() == targetPinCode).map(ad -> ad.getStudentId()).collect(Collectors.toList());
 					
+				    List<Student> findStudentInfo = studentList.stream().filter(st -> findStudentIdByPin.contains(st.getId())).collect(Collectors.toList());
+				    
+				    return findStudentInfo;
+				    
+				    // ** SECOND WAY **
+				    /*
 					List<Student> filteredStudents = studentList.stream()
 			                .filter(student -> hasMatchingPinCode(student.getId(), addressList, targetPinCode))
 			                .collect(Collectors.toList());
 					
 					return filteredStudents;
-					
-					/* for(Address address : addressList)
+					*/
+
+                    /*
+					for(Address address : addressList)
 					{
 						if(address.getPinCode() == targetPinCode)
 						{
@@ -56,9 +66,12 @@ public class SolutionOne
 					}*/
 				}
 				
+			    /*
 				private static boolean hasMatchingPinCode(int studentId, List<Address> addressList, int targetPinCode) {
 					return addressList.stream()
 			                .anyMatch(address -> address.getStudentId() == studentId && address.getPinCode() == targetPinCode);
 				}
+				*/
+
 
 }

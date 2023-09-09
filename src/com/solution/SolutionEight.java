@@ -10,12 +10,13 @@ public class SolutionEight {
      
 		// ** Eight **
 		
-		List<Class> classList = Main.readClassDataFromCSV();
 		List<Student> studentList = Main.readStudentDataFromCSV();
-		List<Address> addressList = Main.readAddressDataFromCSV();
-
 		List<Student> filteredStudent8 = findAbove20FailedStudent(studentList);
-				
+
+		filteredStudent8.forEach(st -> System.out.println("Id " + st.getId() + " Name " + st.getName() + " Gender " + st.getGender()
+		+ " Age " + st.getAge() + " Marks " + st.getMarks()));
+		
+		/*		
 		for(Student student : filteredStudent8)
 		{
 			System.out.println("Id " + student.getId());
@@ -24,6 +25,7 @@ public class SolutionEight {
 			System.out.println("Age " + student.getAge());
 			System.out.println("Marks " + student.getMarks());
 		}
+		*/
 		
 	}
     

@@ -22,6 +22,11 @@ public class SolutionFourth {
 		List<Student> filteredStudent4 = findPassedStudent(classList , studentList , addressList , targetGender , targetAge , targetCity , targetPinCode);
 				
 		System.out.println("Names of all pass students  :- ");
+		
+		filteredStudent4.forEach(st -> System.out.println("Id " + st.getId() + " Name " + st.getName() + " Gender " + st.getGender()
+		+ " Age " + st.getAge() + " Marks " + st.getMarks()));
+		
+		/*
 		for(Student student : filteredStudent4)
 		{
 			System.out.println("Id " + student.getId());
@@ -30,6 +35,8 @@ public class SolutionFourth {
 			System.out.println("Age " + student.getAge());
 			System.out.println("Marks " + student.getMarks());
 		}
+		*/
+		
 		
 	}
 	

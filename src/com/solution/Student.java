@@ -1,16 +1,15 @@
 package com.solution;
 
 public class Student {
-	
+
 	private int id;
 	private String name;
 	private int classId;
 	private int marks;
 	private String gender;
 	private int age;
-	
-	public Student(int id , String name , int classId , int marks , String gender , int age)
-	{
+
+	public Student(int id, String name, int classId, int marks, String gender, int age) {
 		this.id = id;
 		this.name = name;
 		this.classId = classId;
@@ -66,7 +65,5 @@ public class Student {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
-	
 
 }

@@ -36,7 +36,8 @@ public class SolutionOne
 				    // ** One Way ** 
 				    List<Integer> findStudentIdByPin = addressList.stream().filter(ad -> ad.getPinCode() == targetPinCode).map(ad -> ad.getStudentId()).collect(Collectors.toList());
 					
-				    List<Student> findStudentInfo = studentList.stream().filter(st -> findStudentIdByPin.contains(st.getId())).collect(Collectors.toList());
+					List<Student> findStudentInfo = studentList.stream()
+							.filter(st -> findStudentIdByPin.contains(st.getId())).collect(Collectors.toList());
 				    
 				    return findStudentInfo;
 				    

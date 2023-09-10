@@ -6,9 +6,8 @@ public class Address {
 	private int pinCode;
 	private String city;
 	private int studentId;
-	
-	public Address(int id , int pinCode , String city , int studentId)
-	{
+
+	public Address(int id, int pinCode, String city, int studentId) {
 		this.id = id;
 		this.pinCode = pinCode;
 		this.city = city;

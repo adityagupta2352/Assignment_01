@@ -30,12 +30,11 @@ public class SolutionNine {
 		writeToCsv.writeStudentsToCSV(filteredStudent9, studentFilePath);
 		writeToCsv.writeAddressesToCSV(filteredAddress9, addressFilePath);
 		
-		
 		/* 
-		It will delete from the student list not from the CSV filea
+		It will delete from the student list not from the CSV filess
 		studentList.removeAll(filteredStudent9);
 		addressList.removeAll(filteredAddress9);
-        */
+                */
 		
 		System.out.println("After deleting student data :- ");
 

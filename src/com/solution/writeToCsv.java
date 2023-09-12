@@ -53,9 +53,8 @@ public class writeToCsv {
 			e.printStackTrace();
 		}
 	}
-	
-	static void writeClassToCsv(List<Class> classList , String classFilePath)
-	{
+
+	static void writeClassToCsv(List<Class> classList, String classFilePath) {
 		try (BufferedWriter write = new BufferedWriter(new FileWriter(classFilePath))) {
 
 			write.write("Id,Name");

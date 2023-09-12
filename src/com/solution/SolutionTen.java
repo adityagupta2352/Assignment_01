@@ -13,7 +13,7 @@ public class SolutionTen {
 		List<Address> addressList = Main.readAddressDataFromCSV();
 		String classFilePath = "src\\ClassData.csv";
 
-		deleteByIdInStudentAndAddressAndClass(classList, studentList, addressList , classFilePath);
+		deleteByIdInStudentAndAddressAndClass(classList, studentList, addressList, classFilePath);
 	}
 
 	private static void deleteByIdInStudentAndAddressAndClass(List<Class> classList, List<Student> studentList,
@@ -26,9 +26,9 @@ public class SolutionTen {
 				.collect(Collectors.toList());
 
 		// classList.retainAll(classData);
-		
+
 		// Delete from CSV
-		writeToCsv.writeClassToCsv(classData , classFilePath);
+		writeToCsv.writeClassToCsv(classData, classFilePath);
 
 		classData.forEach(cls -> System.out.println("Id : " + cls.getId() + " Name : " + cls.getName()));
 	}

@@ -20,7 +20,7 @@ public class Solution {
 		// ** Second **
 		startPage = 1 ; int endPage = 8;
 		List<Student> filteredStudentList2 = readFemaleStudentOrderByName(studentList , startPage , endPage);
-		// filteredStudentList2.forEach(st -> System.out.println("Id " + st.getId() + " Name  " + st.getName()));
+	    // filteredStudentList2.forEach(st -> System.out.println("Id " + st.getId() + " Name  " + st.getName()));
 		
 		// ** Third + Fourth **
 		startPage = 1 ; endPage = 8;
@@ -43,7 +43,7 @@ public class Solution {
 	private static List<Student> readFemaleStudentOrderByName(List<Student> studentList, int startPage, int pageSize) {
 		
 		List<Student> filteredStudentList = studentList.stream()
-			    .filter(st -> "F".equals(st.getGender())).skip((startPage - 1) * pageSize).limit(pageSize).sorted(Comparator.comparing(Student::getName).reversed())
+			    .filter(st -> "F".equals(st.getGender())).skip((startPage - 1) * pageSize).limit(pageSize).sorted(Comparator.comparing(Student::getName))
 			    .collect(Collectors.toList());
 		
 		return filteredStudentList;
